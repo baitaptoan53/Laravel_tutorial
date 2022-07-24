@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('fist_name', 50);
             $table->string('last_name', 50);
             $table->date('birthdate');
-            $table->boolean('gender');
+            $table->boolean('gen_der');
         });
     }
 

@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use DateTime;
 
 class student extends Model
 {
@@ -29,6 +28,14 @@ class student extends Model
             get: function ($value, $attributes) {
                 $age = \Carbon\Carbon::parse($attributes['birthdate'])->diff(\Carbon\Carbon::now())->format('%y');
                 return $age;
+            },
+        );
+    }
+    protected function gender(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                return ($attributes['gender'] == 1 ? 'Male' : 'Female');
             },
         );
     }
