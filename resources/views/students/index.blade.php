@@ -18,7 +18,7 @@
     @foreach ($students as $student)
         <tr>
             <td class='center'>{{ $student->id }}</td>
-            <td class='center'>{{ $student->getFullName() }}</td>
+            <td class='center'>{{ $student->fullname }}</td>
            
             <td class='center'>{{ $student->birthdate }}</td>
             <td class='center'>{{ $student->gender }}</td>
