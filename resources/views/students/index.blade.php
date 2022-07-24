@@ -1,23 +1,27 @@
-
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
 <h1>
-                   Đây là danh sách sinh viên
+    Đây là danh sách sinh viên
 </h1>
 <table border="1" width="100%">
-                   <tr>
-                                      <th>ID</th>          
-                                      <th>Name</th>
-                                      <th>Name</th>
-                                      <th>Birthdate</th>
-                                      <th>Gender</th>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+    
+        <th>Birthdate</th>
+        <th>Gender</th>
 
-                   </tr>
-                   @foreach($students as $student)
-                   <tr>
-                                      <td>{{$student->id}}</td>
-                                      <td>{{$student->fist_name}}</td>
-                                      <td>{{$student->last_name}}</td>
-                                      <td>{{$student->birthdate}}</td>
-                                      <td>{{$student->gender}}</td>
-                   </tr>
-                   @endforeach
+    </tr>
+    @foreach ($students as $student)
+        <tr>
+            <td class='center'>{{ $student->id }}</td>
+            <td class='center'>{{ $student->getFullName() }}</td>
+           
+            <td class='center'>{{ $student->birthdate }}</td>
+            <td class='center'>{{ $student->gender }}</td>
+        </tr>
+    @endforeach
 </table>
