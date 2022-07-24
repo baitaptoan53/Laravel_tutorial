@@ -27,9 +27,8 @@ class student extends Model
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                $date = new DateTime($attributes['birthdate']);
-                $now = new DateTime();
-                return $now->diff($date);
+                $age = \Carbon\Carbon::parse($attributes['birthdate'])->diff(\Carbon\Carbon::now())->format('%y');
+                return $age;
             },
         );
     }
