@@ -3,6 +3,7 @@
 use App\Http\Controllers\WellcomeController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\StudentContrller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', action: [WellcomeController::class, 'welcome'])->name('welcome');
 // Route::get('/{ten}', action: [HelloController::class, 'hello'])->name('hello');
+Route::get('/',action:[StudentContrller::class,'index'])->name('student.index');
