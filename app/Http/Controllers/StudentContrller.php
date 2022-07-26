@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\student;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 
 class StudentContrller extends Controller
 {
@@ -15,5 +15,18 @@ class StudentContrller extends Controller
         return view('students.index', [
             'students' => $student
         ]);
+    }
+    public function create()
+    {
+        return view('students.create');
+    }
+    public function store(Request $request)
+    {
+        $student = new student();
+        $student->fist_name = $request->get('fist_name');
+        $student->last_name = $request->get('last_name');
+        $student->birthdate = $request->get('birthdate');
+        $student->gen_der = $request->get('gen_der');
+        $student->save();
     }
 }

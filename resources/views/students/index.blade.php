@@ -6,6 +6,7 @@
 <h1>
     Đây là danh sách sinh viên
 </h1>
+<a href="{{route('student.create')}}">Add</a>
 <table border="1" width="100%">
     <tr>
         <th>ID</th>
