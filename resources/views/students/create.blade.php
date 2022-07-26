@@ -13,8 +13,8 @@
     <input type="text" name="last_name">
     <br>
     Gender:
-    <input type="radio" name="gen_der" value="0">Male
-    <input type="radio" name="gen_der" value="1">Female
+    <input type="radio" name="gender" value="0">Male
+    <input type="radio" name="gender" value="1">Female
     <br>
     Birth date
     <input type="date" name="birthdate">

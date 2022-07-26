@@ -26,7 +26,8 @@ class StudentContrller extends Controller
         $student->fist_name = $request->get('fist_name');
         $student->last_name = $request->get('last_name');
         $student->birthdate = $request->get('birthdate');
-        $student->gen_der = $request->get('gen_der');
+        $student->gender = $request->get('gender');
         $student->save();
+        return redirect()->route('student.index');
     }
 }
