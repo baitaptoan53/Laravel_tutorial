@@ -30,4 +30,8 @@ class StudentContrller extends Controller
         $student->save();
         return redirect()->route('student.index');
     }
+    public function destroy(student $student)
+    {
+        student::where('id',$student)->delete();
+    }
 }
