@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\StudentContrller;
 use Illuminate\Support\Facades\Route;
 
@@ -8,4 +9,5 @@ Route::group(['prefix' => 'student'], function () {
                    Route::get('/', action: [StudentContrller::class, 'index'])->name('student.index');
                    Route::get('/create', action: [StudentContrller::class, 'create'])->name('student.create');
                    Route::post('/create', action: [StudentContrller::class, 'store'])->name('student.store');
+                   Route::delete('/destroy/{student}', [StudentContrller::class, 'destroy'])->name('student.destroy');
 });

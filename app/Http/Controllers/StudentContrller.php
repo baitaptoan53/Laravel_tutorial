@@ -32,6 +32,8 @@ class StudentContrller extends Controller
     }
     public function destroy(student $student)
     {
-        student::where('id',$student)->delete();
+        // student::where('id',$student)->delete();
+        $student -> delete();
+        return redirect()->route('student.index');
     }
 }
