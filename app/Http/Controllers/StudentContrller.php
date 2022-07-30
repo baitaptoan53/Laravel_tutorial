@@ -13,6 +13,8 @@ class StudentContrller extends Controller
         $search = $request->get('q');
         $student = student::query()
         ->where('last_name', 'like', '%' . $search . '%')
+        ->orWhere('fist_name', 'like', '%' . $search . '%')
+        
         ->get();
         //hien thi view trong folder student trong do co file index
         return view('students.index', [
