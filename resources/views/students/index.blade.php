@@ -8,12 +8,18 @@
 </h1>
 <a href="{{ route('student.create') }}">Add</a>
 <table border="1" width="100%">
+    <caption>
+        <form>
+            Search: <input type="text" name="q">
+        </form>
+    </caption>
     <tr>
         <th>ID</th>
         <th>Full Name</th>
 
         <th>Age</th>
         <th>Gender</th>
+        <th>Tool</th>
     </tr>
     @foreach ($students as $student)
         <tr>
@@ -22,9 +28,7 @@
             <td class='center'>{{ $student->age }}</td>
             <td class='center'>{{ $student->gender }}</td>
             <td>
-                <a href="{{ route('student.edit',$student) }}">Edit</a>
-            </td>
-            <td>
+                <a href="{{ route('student.edit', $student) }}">Edit</a>
 
                 <form action="{{ route('student.destroy', $student) }}" method="POST">
                     @csrf
@@ -32,6 +36,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </td>
+
         </tr>
     @endforeach
 </table>

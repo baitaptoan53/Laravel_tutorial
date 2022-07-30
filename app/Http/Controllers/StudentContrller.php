@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class StudentContrller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $student = student::all();
+        $search = $request->get('q');
+        $student = student::query()
+        ->where('last_name', 'like', '%' . $search . '%')
+        ->get();
         //hien thi view trong folder student trong do co file index
         return view('students.index', [
             'students' => $student
