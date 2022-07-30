@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class student extends Model
 {
     //khong cho cot update_at ton tai database
+    protected $fillable = ['fist_name','last_name','age','birthdate',''];
     public $timestamps = false;
     use HasFactory;
     //menner 1

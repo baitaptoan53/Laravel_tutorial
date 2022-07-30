@@ -33,7 +33,20 @@ class StudentContrller extends Controller
     public function destroy(student $student)
     {
         // student::where('id',$student)->delete();
-        $student -> delete();
+        $student->delete();
+        return redirect()->route('student.index');
+    }
+    public function edit(student $student)
+    {
+        return view('students.edit', [
+            'student' => $student
+        ]);
+    }
+    public function update(Request $request, student $student)
+    {
+        $student->update(
+            $request->except(['_token', '_method'])
+        );
         return redirect()->route('student.index');
     }
 }

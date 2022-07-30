@@ -22,11 +22,14 @@
             <td class='center'>{{ $student->age }}</td>
             <td class='center'>{{ $student->gender }}</td>
             <td>
-               
-                <form action="{{route('student.destroy',$student )}}" method="POST">
+                <a href="{{ route('student.edit',$student) }}">Edit</a>
+            </td>
+            <td>
+
+                <form action="{{ route('student.destroy', $student) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button> 
+                    <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
