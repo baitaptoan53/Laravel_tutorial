@@ -26,14 +26,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            ' fist_name' => 'required|min:3|max:50',
-            ' last_name' => 'required|min:3|max:50',
-            ' birthdate' => 'required|date',
+            'fist_name' => 'required|min:3|max:50',
+            'last_name' => 'required|min:3|max:50',
+            'birthdate' => 'required|date',
             'gender' => 'required'
         ];
     }
-    public function messages()
-    {
-        
-    }
+   
 }

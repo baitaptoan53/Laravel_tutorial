@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Student\StoreRequest;
+use App\Http\Requests\Student\UpdateRequest;
 use App\Models\student;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class StudentContrller extends Controller
         $student->delete();
         return redirect()->route('student.index');
     }
-    public function edit(student $student)
+    public function edit(UpdateRequest $student)
     {
         return view('students.edit', [
             'student' => $student
