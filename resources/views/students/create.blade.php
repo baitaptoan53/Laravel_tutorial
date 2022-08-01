@@ -3,6 +3,15 @@
         margin: 16px 0;
     }
 </style>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <h1>This is add student page</h1>
 <form action="{{ route('student.store') }}" method="post">
     @csrf

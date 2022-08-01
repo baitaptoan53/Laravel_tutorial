@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Student\StoreRequest;
 use App\Models\student;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class StudentContrller extends Controller
     {
         return view('students.create');
     }
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $student = new student();
         $student->fist_name = $request->get('fist_name');
