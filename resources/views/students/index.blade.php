@@ -40,3 +40,4 @@
         </tr>
     @endforeach
 </table>
+{{ $students->links() }}

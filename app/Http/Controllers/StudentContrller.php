@@ -10,15 +10,19 @@ class StudentContrller extends Controller
 {
     public function index(Request $request)
     {
+        // $age = \Carbon\Carbon::parse($request->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y');
         $search = $request->get('q');
         $student = student::query()
         ->where('last_name', 'like', '%' . $search . '%')
         ->orWhere('fist_name', 'like', '%' . $search . '%')
+        // ->orWhere('age', 'like', '%' . $search . '%')
+        ->paginate(2);
+        $student ->appends(['q' => $search]);
         
-        ->get();
         //hien thi view trong folder student trong do co file index
         return view('students.index', [
-            'students' => $student
+            'students' => $student,
+            'search' => $search
         ]);
     }
     public function create()
