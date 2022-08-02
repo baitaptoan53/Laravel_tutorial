@@ -47,13 +47,13 @@ class StudentContrller extends Controller
         $student->delete();
         return redirect()->route('student.index');
     }
-    public function edit(UpdateRequest $student)
+    public function edit(student $student)
     {
         return view('students.edit', [
             'student' => $student
         ]);
     }
-    public function update(Request $request, student $student)
+    public function update(UpdateRequest $request, student $student)
     {
         $student->update(
             $request->except(['_token', '_method'])

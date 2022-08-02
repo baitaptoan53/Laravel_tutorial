@@ -30,6 +30,4 @@
     <input type="date" name="birthdate" value="{{ $student->birthdate }}">
     <br>
     <button>Edit</button>
-
-
 </form>
