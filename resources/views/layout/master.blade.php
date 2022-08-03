@@ -666,7 +666,7 @@
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#"
                                 role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/flags/us.jpg" alt="user-image" class="mr-0 mr-sm-1"
+                                <img src={{asset("/images/flags/us.jpg")}} alt="user-image" class="mr-0 mr-sm-1"
                                     height="12">
                                 <span class="align-middle d-none d-sm-inline-block">English</span> <i
                                     class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
@@ -675,25 +675,25 @@
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-1"
+                                    <img src={{asset("images/flags/germany.jpg")}} alt="user-image" class="mr-1"
                                         height="12"> <span class="align-middle">German</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-1"
+                                    <img src={{asset("images/flags/italy.jpg")}} alt="user-image" class="mr-1"
                                         height="12"> <span class="align-middle">Italian</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-1"
+                                    <img src={{asset("/images/flags/spain.jpg")}} alt="user-image" class="mr-1"
                                         height="12"> <span class="align-middle">Spanish</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-1"
+                                    <img src={{asset("/images/flags/russia.jpg")}} alt="user-image" class="mr-1"
                                         height="12"> <span class="align-middle">Russian</span>
                                 </a>
 
@@ -860,7 +860,7 @@
                             <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown"
                                 href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="user-image"
+                                    <img src={{asset("images/users/avatar-1.jpg")}} alt="user-image"
                                         class="rounded-circle">
                                 </span>
                                 <span>
