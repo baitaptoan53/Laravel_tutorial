@@ -18,7 +18,7 @@ class StudentContrller extends Controller
         ->where('last_name', 'like', '%' . $search . '%')
         ->orWhere('fist_name', 'like', '%' . $search . '%')
         // ->orWhere('age', 'like', '%' . $search . '%')
-        ->paginate(10);
+        ->paginate(5);
         $student ->appends(['q' => $search]);
         
         //hien thi view trong folder student trong do co file index
