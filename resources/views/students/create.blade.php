@@ -1,8 +1,5 @@
-<style>
-    input {
-        margin: 16px 0;
-    }
-</style>
+@extends('layout.master')
+@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -12,7 +9,6 @@
         </ul>
     </div>
 @endif
-<h1>This is add student page</h1>
 <form action="{{ route('student.store') }}" method="post">
     @csrf
     Fisrt name
@@ -32,3 +28,4 @@
 
 
 </form>
+@endsection

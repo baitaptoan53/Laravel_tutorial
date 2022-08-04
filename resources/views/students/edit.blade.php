@@ -1,9 +1,5 @@
-<style>
-    input {
-        margin: 16px 0;
-    }
-</style>
-<h1>This is edit student page</h1>
+@extends('layout.master')
+@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -31,3 +27,4 @@
     <br>
     <button>Edit</button>
 </form>
+@endsection

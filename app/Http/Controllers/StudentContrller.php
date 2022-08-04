@@ -6,26 +6,16 @@ use App\Http\Requests\Student\StoreRequest;
 use App\Http\Requests\Student\UpdateRequest;
 use App\Models\student;
 use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
-
+use Yajra\Datatables\Datatables;
 class StudentContrller extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // $age = \Carbon\Carbon::parse($request->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y');
-        $search = $request->get('q');
-        $student = student::query()
-        ->where('last_name', 'like', '%' . $search . '%')
-        ->orWhere('fist_name', 'like', '%' . $search . '%')
-        // ->orWhere('age', 'like', '%' . $search . '%')
-        ->paginate(5);
-        $student ->appends(['q' => $search]);
-        
-        //hien thi view trong folder student trong do co file index
-        return view('students.index', [
-            'students' => $student,
-            'search' => $search
-        ]);
+        return view('students.index');
+    }
+    public function api()
+    {
+        return Datatables::of(student::query())->make(true);
     }
     public function create()
     {

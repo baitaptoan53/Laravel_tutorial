@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 //                    Route::put('/edit/{student}', action: [StudentContrller::class, 'update'])->name('student.update');
 // });
 Route::resource('student', StudentContrller::class)->except(['show']);
+Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api');
 Route::get('/test' , function(){
     return view('layout.master');
 });
