@@ -30,10 +30,9 @@
                         <form action="{{ route('student.destroy', $student) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
-
                 </tr>
             @endforeach
         </table>
