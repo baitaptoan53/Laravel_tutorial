@@ -7,8 +7,19 @@ use App\Http\Requests\Student\UpdateRequest;
 use App\Models\student;
 use Illuminate\Routing\Controller;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Route;
+
 class StudentContrller extends Controller
 {
+    public function __construct()
+    {
+        $routeName = Route::currentRouteName();
+        $arr =  explode('.', $routeName);
+        $arr = array_map('ucfirst', $arr);
+        $title = implode(' ', $arr);
+        View::share('title', $title);
+    }
     public function index()
     {
         return view('students.index');
@@ -16,17 +27,17 @@ class StudentContrller extends Controller
     public function api()
     {
         return Datatables::of(student::query())
-        //conection full name
-        ->addColumn('full_name', function (student $student) {
-            return $student->first_name . ' ' . $student->last_name;
-        })
-        ->addColumn('edit', function ($object) {
-            return route('student.edit', $object);
-        })
-        ->addColumn('destroy', function ($object) {
-            return route('student.destroy', $object);
-        })
-        ->make(true);
+            //conection full name
+            ->addColumn('full_name', function (student $student) {
+                return $student->first_name . ' ' . $student->last_name;
+            })
+            ->addColumn('edit', function ($object) {
+                return route('student.edit', $object);
+            })
+            ->addColumn('destroy', function ($object) {
+                return route('student.destroy', $object);
+            })
+            ->make(true);
     }
     public function create()
     {
