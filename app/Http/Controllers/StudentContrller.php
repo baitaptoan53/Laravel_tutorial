@@ -15,7 +15,18 @@ class StudentContrller extends Controller
     }
     public function api()
     {
-        return Datatables::of(student::query())->make(true);
+        return Datatables::of(student::query())
+        //conection full name
+        ->addColumn('full_name', function (student $student) {
+            return $student->first_name . ' ' . $student->last_name;
+        })
+        ->addColumn('edit', function ($object) {
+            return route('student.edit', $object);
+        })
+        ->addColumn('destroy', function ($object) {
+            return route('student.destroy', $object);
+        })
+        ->make(true);
     }
     public function create()
     {
@@ -31,11 +42,16 @@ class StudentContrller extends Controller
         $student->save();
         return redirect()->route('student.index');
     }
-    public function destroy(student $student)
+    public function destroy($student)
     {
         // student::where('id',$student)->delete();
-        $student->delete();
-        return redirect()->route('student.index');
+        // $student->delete();
+        // return redirect()->route('student.index');
+        student::destroy($student);
+        $arr = [];
+        $arr['status'] = true;
+        $arr['message'] = '';
+        return response($arr, 200);
     }
     public function edit(student $student)
     {
