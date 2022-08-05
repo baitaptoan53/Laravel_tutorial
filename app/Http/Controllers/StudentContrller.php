@@ -12,21 +12,26 @@ use Illuminate\Support\Facades\Route;
 
 class StudentContrller extends Controller
 {
+    private $model;
+
     public function __construct()
     {
+        $this->model = new student();
         $routeName = Route::currentRouteName();
-        $arr =  explode('.', $routeName);
+        $arr = explode('.', $routeName);
         $arr = array_map('ucfirst', $arr);
         $title = implode(' ', $arr);
         View::share('title', $title);
     }
+
     public function index()
     {
         return view('students.index');
     }
+
     public function api()
     {
-        return Datatables::of(student::query())
+        return Datatables::of($this->model::query())
             //conection full name
             ->addColumn('full_name', function (student $student) {
                 return $student->first_name . ' ' . $student->last_name;
@@ -39,10 +44,12 @@ class StudentContrller extends Controller
             })
             ->make(true);
     }
+
     public function create()
     {
         return view('students.create');
     }
+
     public function store(StoreRequest $request)
     {
         $student = new student();
@@ -53,24 +60,27 @@ class StudentContrller extends Controller
         $student->save();
         return redirect()->route('student.index');
     }
+
     public function destroy($student)
     {
         // student::where('id',$student)->delete();
         // $student->delete();
         // return redirect()->route('student.index');
-        student::destroy($student);
+        $this->model::destroy($student);
         $arr = [];
         $arr['status'] = true;
         $arr['message'] = '';
         return response($arr, 200);
     }
+
     public function edit(student $student)
     {
         return view('students.edit', [
             'student' => $student
         ]);
     }
-    public function update(UpdateRequest $request, student $student)
+
+    public function update(UpdateRequest $request, $student)
     {
         $student->update(
             $request->except(['_token', '_method'])
