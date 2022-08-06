@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentContrller;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', action: [WellcomeController::class, 'welcome'])->name('welcome');
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::resource('student', StudentContrller::class)->except(['show']);
 Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api');
-Route::get('/test' , function(){
-    return view('layout.master');
-});
+// Route::get('/test' , function(){
+//     return view('layout.master');
+// });
+Route::resource('course',CourseController::class)->except(['show']);
+Route::get('/course/api', [CourseController::class, 'api'])->name('course.api');

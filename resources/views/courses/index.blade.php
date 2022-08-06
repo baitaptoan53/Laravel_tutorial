@@ -5,17 +5,18 @@
 @endpush
 @section('content')
     <div class='card-body'>
-        <a class="btn btn-success" href="{{ route('student.create') }}">
-            Add Student
+        <a class="btn btn-success" href="{{ route('course.create') }}">
+            Add Course
         </a>
         <table class="table table-striped" id="table-index">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birth of date</th>
-                <th>Gender</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Teacher</th>
+                <th>Status</th>
+                <th>Student_id</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -59,17 +60,17 @@
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('student.api') !!}',
+                ajax: '{!! route('course.api') !!}',
                 columnDefs: [
                     {className: "not-export", "targets": [3]}
                 ],
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'fist_name', name: 'fist_name'},
-                    {data: 'last_name', name: 'last_name'},
-
-                    {data: 'birthdate', name: 'birthdate'},
-                    {data: 'gender', name: 'gender'},
+                    {data: 'name', name: 'name'},
+                    {data: 'description', name: 'description'},
+                    {data: 'teacher', name: 'teacher'},
+                    {data: 'status', name: 'status'},
+                    {data: 'student_id', name: 'student_id'},
                     {
                         data: 'edit',
                         targets: 5,
@@ -79,7 +80,7 @@
                             return `<a class="btn btn-primary" href="${data}">
                             Edit
                         </a>`;
-                        }
+                        }   
                     },
                     {
                         data: 'destroy',
