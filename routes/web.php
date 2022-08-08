@@ -19,5 +19,5 @@ Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api'
 // Route::get('/test' , function(){
 //     return view('layout.master');
 // });
-Route::resource('course',CourseController::class)->except(['show']);
-Route::get('/course/api', [CourseController::class, 'api'])->name('course.api');
+Route::resource('courses',CourseController::class)->except(['show']);
+Route::get('/courses/api', [CourseController::class, 'api'])->name('courses.api');

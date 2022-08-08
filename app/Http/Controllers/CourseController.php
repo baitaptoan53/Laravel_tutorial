@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateCourseRequest;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use Yajra\Datatables\Datatables;
+use App\Enums\CourseStatus;
+use App\Models\student;
 
 
 class CourseController extends Controller
@@ -21,7 +23,10 @@ class CourseController extends Controller
         $arr = explode('.', $routeName);
         $arr = array_map('ucfirst', $arr);
         $title = implode(' ', $arr);
+        $arrCourseStatus = CourseStatus::getArrayView();
+
         View::share('title', $title);
+        View::share('arrCourseStatus', $arrCourseStatus);
     }
     public function index()
     {
@@ -31,10 +36,10 @@ class CourseController extends Controller
     {
         return Datatables::of($this->model::query())
             ->addColumn('edit', function ($object) {
-                return route('course.edit', $object);
+                return route('courses.edit', $object);
             })
             ->addColumn('destroy', function ($object) {
-                return route('course.destroy', $object);
+                return route('courses.destroy', $object);
             })
             ->make(true);
     }
@@ -42,24 +47,16 @@ class CourseController extends Controller
     {
         return view('courses.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCourseRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $course =new Course();
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->status = $request->status;
+        $course->teacher=$request->teacher;
+        $course->save();
+        return redirect()->route('courses.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function show(Course $course)
     {
         //

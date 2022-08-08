@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('description');
             $table->string('teacher');
-            $table->smallInteger('status')->index();
-            $table->foreignId('course_id')->constrained();
+            $table->string('status')->index();
             $table->timestamps();
         });
     }

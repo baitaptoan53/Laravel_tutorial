@@ -15,4 +15,13 @@ final class CourseStatus extends Enum
     public const Published = 1;
     public const Archived = 2;
     public const Pending_Review = 3;
+    public static function getArrayView(): array
+    {
+        return [
+            'Draft'  => self::Draft,
+            'Published'  => self::Published,
+            'Archived' => self::Archived,
+            'Pending Review' => self::Pending_Review,
+        ];
+    }
 }

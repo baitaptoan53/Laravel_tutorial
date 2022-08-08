@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Student\StoreRequest;
 use App\Http\Requests\Student\UpdateRequest;
 use App\Models\student;
+use App\Models\Course;
 use Illuminate\Routing\Controller;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
+use App\Enums\StudentStatus;
 
 class StudentContrller extends Controller
 {
@@ -21,6 +23,9 @@ class StudentContrller extends Controller
         $arr = explode('.', $routeName);
         $arr = array_map('ucfirst', $arr);
         $title = implode(' ', $arr);
+        $arrStudentStatus = StudentStatus::getArrayView();
+
+        View::share('arrStudentStatus', $arrStudentStatus);
         View::share('title', $title);
     }
 
@@ -47,7 +52,11 @@ class StudentContrller extends Controller
 
     public function create()
     {
-        return view('students.create');
+        $course = Course::query()->get();
+        return view('students.create',
+    [
+        'course' => $course,
+    ]);
     }
 
     public function store(StoreRequest $request)

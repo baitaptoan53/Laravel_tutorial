@@ -5,7 +5,7 @@
 @endpush
 @section('content')
     <div class='card-body'>
-        <a class="btn btn-success" href="{{ route('course.create') }}">
+        <a class="btn btn-success" href="{{ route('courses.create') }}">
             Add Course
         </a>
         <table class="table table-striped" id="table-index">
@@ -16,7 +16,6 @@
                 <th>Description</th>
                 <th>Teacher</th>
                 <th>Status</th>
-                <th>Student_id</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -60,17 +59,17 @@
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('course.api') !!}',
+                ajax: '{!! route('courses.api') !!}',
                 columnDefs: [
                     {className: "not-export", "targets": [3]}
                 ],
                 columns: [
+            
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
                     {data: 'description', name: 'description'},
                     {data: 'teacher', name: 'teacher'},
                     {data: 'status', name: 'status'},
-                    {data: 'student_id', name: 'student_id'},
                     {
                         data: 'edit',
                         targets: 5,

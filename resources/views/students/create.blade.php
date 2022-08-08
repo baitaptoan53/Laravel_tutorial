@@ -24,8 +24,24 @@
     Birth date
     <input type="date" name="birthdate">
     <br>
+    @foreach($arrStudentStatus as $option =>$value)
+    <input type="radio" name="status" value="{{ $value }}" class="m-2"  
+    @if ($loop->first)
+        checked
+    @endif>
+    {{ $option }}
+    @endforeach
+    <br>
+
+    Course
+    <select name="course_id">
+        @foreach($course as $course)
+            <option value="{{ $course->id }}">
+                {{ $course->name }}
+            </option>
+        @endforeach
+    </select>
+    <br>
     <button>Create</button>
-
-
 </form>
 @endsection
