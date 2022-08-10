@@ -15,7 +15,6 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Teacher</th>
-                <th>Status</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -69,7 +68,6 @@
                     {data: 'name', name: 'name'},
                     {data: 'description', name: 'description'},
                     {data: 'teacher', name: 'teacher'},
-                    {data: 'status', name: 'status'},
                     {
                         data: 'edit',
                         targets: 5,

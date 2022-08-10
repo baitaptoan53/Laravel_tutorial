@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CourseStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'description' => $this->faker->text,
+            'teacher' => $this->faker->name,
+            'status' => $this->faker->randomElement(CourseStatus::asArray()), 
         ];
     }
 }

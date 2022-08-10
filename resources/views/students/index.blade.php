@@ -67,7 +67,6 @@
                     {data: 'id', name: 'id'},
                     {data: 'fist_name', name: 'fist_name'},
                     {data: 'last_name', name: 'last_name'},
-
                     {data: 'birthdate', name: 'birthdate'},
                     {data: 'gender', name: 'gender'},
                     {
