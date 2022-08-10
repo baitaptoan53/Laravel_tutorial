@@ -14,6 +14,7 @@
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Full Name</th>
                 <th>Birth of date</th>
                 <th>Gender</th>
                 <th>Edit</th>
@@ -67,6 +68,7 @@
                     {data: 'id', name: 'id'},
                     {data: 'fist_name', name: 'fist_name'},
                     {data: 'last_name', name: 'last_name'},
+                    {data:'fullName' name:'fullName'},
                     {data: 'birthdate', name: 'birthdate'},
                     {data: 'gender', name: 'gender'},
                     {

@@ -12,12 +12,10 @@ class student extends Model
     protected $fillable = ['fist_name','last_name','age','birthdate',''];
     public $timestamps = false;
     use HasFactory;
-    //menner 1
     // public function getFullName()
     // {
     //     return $this->fist_name  . ' ' . $this->last_name;
     // }
-    //menner 2
     protected function fullName(): Attribute
     {
         return Attribute::make(

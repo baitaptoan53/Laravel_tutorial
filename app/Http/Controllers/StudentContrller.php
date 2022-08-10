@@ -38,8 +38,8 @@ class StudentContrller extends Controller
     {
         return Datatables::of($this->model::query())
             //conection full name
-            ->addColumn('full_name', function (student $student) {
-                return $student->first_name . ' ' . $student->last_name;
+            ->editColumn('fullName', function ($object) {
+                return $object->fullName;
             })
             ->addColumn('edit', function ($object) {
                 return route('student.edit', $object);
