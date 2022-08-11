@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Enums\CourseStatus;
 use App\Models\Course;
+use App\Enums\StudentStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'last_name' => $this->faker->lastname,
             'birthdate' => $this->faker->dateTimeBetween('-30 years', '-18 years'),
             'gender' => $this->faker->boolean(),
-            'status' => $this->faker->randomElement(CourseStatus::asArray()),
+            'status' => $this->faker->randomElement(StudentStatus::asArray()),
             'course_id' => Course::all()->random()->id,
         ];
     }

@@ -12,13 +12,15 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
                 <th>Full Name</th>
                 <th>Birth of date</th>
                 <th>Gender</th>
+                <th>Course Name</th>
+                <th>Status</th>
                 <th>Edit</th>
                 <th>Delete</th>
+
+                
             </tr>
             </thead>
         </table>
@@ -66,11 +68,11 @@
                 ],
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'fist_name', name: 'fist_name'},
-                    {data: 'last_name', name: 'last_name'},
-                    {data:'fullName' name:'fullName'},
+                    {data: 'full_name', name: 'full_name'},
                     {data: 'birthdate', name: 'birthdate'},
                     {data: 'gender', name: 'gender'},
+                    {data: 'course_name', name: 'course_name'},
+                    {data: 'status', name: 'status'},
                     {
                         data: 'edit',
                         targets: 5,

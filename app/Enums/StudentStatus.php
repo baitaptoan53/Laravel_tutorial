@@ -15,5 +15,12 @@ final class StudentStatus extends Enum
            'Studying'  => self::Studying,
            'Leave'  => self::Leave,
        ];
+       
+   }
+
+
+   public static function getKeyByValue($value): string
+   {
+       return array_search($value, self::getArrayView(), true);
    }
 }

@@ -29,8 +29,8 @@ class StoreRequest extends FormRequest
             'fist_name' => 'required|min:3|max:50',
             'last_name' => 'required|min:3|max:50',
             'birthdate' => 'required|date|before:today',
-            'gender' => 'required'
-            'course_id'=>'required'
+            'gender' => 'required',
+            'course_id'=>'required',
         ];
     }
    

@@ -36,10 +36,18 @@ class StudentContrller extends Controller
 
     public function api()
     {
-        return Datatables::of($this->model::query())
-            //conection full name
-            ->editColumn('fullName', function ($object) {
-                return $object->fullName;
+        return Datatables::of($this->model::query()->with('course'))
+
+            //get full name
+            ->addColumn('full_name', function ($student) {
+                return $student->fullname;
+            })
+            ->addColumn('course_name', function ($object) {
+                return $object->course->name;
+            })
+            ->addColumn('status', function ($object) {
+                return StudentStatus::getKeyByValue($object->status);
+
             })
             ->addColumn('edit', function ($object) {
                 return route('student.edit', $object);
@@ -87,6 +95,7 @@ class StudentContrller extends Controller
         return view('students.edit', [
             'student' => $student
         ]);
+
     }
 
     public function update(UpdateRequest $request, $student)
