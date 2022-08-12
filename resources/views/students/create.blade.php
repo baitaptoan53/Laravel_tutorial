@@ -9,7 +9,7 @@
         </ul>
     </div>
 @endif
-<form action="{{ route('student.store') }}" method="post">
+<form action="{{ route('student.store') }}" method="post" enctype="multipart/form-data>
     @csrf
     Fisrt name
     <input type="text" name="fist_name">
@@ -41,6 +41,9 @@
             </option>
         @endforeach
     </select>
+    <br>
+    Avatar
+    <input type="file" name="avatar">
     <br>
     <button>Create</button>
 </form>

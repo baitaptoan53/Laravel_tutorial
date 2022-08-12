@@ -31,6 +31,8 @@ class StoreRequest extends FormRequest
             'birthdate' => 'required|date|before:today',
             'gender' => 'required',
             'course_id'=>'required',
+            'status'=>'required',
+            'avatar'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
    

@@ -11,6 +11,8 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Enums\StudentStatus;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class StudentContrller extends Controller
 {
@@ -47,7 +49,6 @@ class StudentContrller extends Controller
             })
             ->addColumn('status', function ($object) {
                 return StudentStatus::getKeyByValue($object->status);
-
             })
             ->addColumn('edit', function ($object) {
                 return route('student.edit', $object);
@@ -61,10 +62,12 @@ class StudentContrller extends Controller
     public function create()
     {
         $course = Course::query()->get();
-        return view('students.create',
-    [
-        'course' => $course,
-    ]);
+        return view(
+            'students.create',
+            [
+                'course' => $course,
+            ]
+        );
     }
 
     public function store(StoreRequest $request)
@@ -74,8 +77,12 @@ class StudentContrller extends Controller
         $student->last_name = $request->get('last_name');
         $student->birthdate = $request->get('birthdate');
         $student->gender = $request->get('gender');
-        $student->save();
-        return redirect()->route('student.index');
+        $student->course_id = $request->get('course_id');
+        $student->status = $request->get('status');
+        $path= Storage::putFile('avatars', $request->file('avatar'));
+        $arr['avatar']=$path;
+        $arr=$student->save();
+        return redirect()->route('student.index')->with('success', 'Added success');
     }
 
     public function destroy($student)
@@ -95,7 +102,6 @@ class StudentContrller extends Controller
         return view('students.edit', [
             'student' => $student
         ]);
-
     }
 
     public function update(UpdateRequest $request, $student)
