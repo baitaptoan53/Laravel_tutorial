@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StudentContrller;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', action: [WellcomeController::class, 'welcome'])->name('welcome');
@@ -14,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 //                    Route::get('/edit/{student}', action: [StudentContrller::class, 'edit'])->name('student.edit');
 //                    Route::put('/edit/{student}', action: [StudentContrller::class, 'update'])->name('student.update');
 // });
-Route::resource('student', StudentContrller::class)->except(['show']);
-Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api');
-// Route::get('/test' , function(){
-//     return view('layout.master');
-// });
-Route::resource('courses',CourseController::class)->except(['show']);
-Route::get('/courses/api', [CourseController::class, 'api'])->name('courses.api');
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'processLogin'])->name('process_login');
+Route::group([
+], function () {
+                   Route::resource('student', StudentContrller::class)->except(['show']);
+                   Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api');
+                   // Route::get('/test' , function(){
+                   //     return view('layout.master');
+                   // });
+                   Route::get('/courses/api', [CourseController::class, 'api'])->name('courses.api');
+                   Route::resource('courses', CourseController::class)->except(['show']);
+});
