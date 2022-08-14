@@ -3,6 +3,8 @@
 use App\Http\Controllers\StudentContrller;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LoginController;
+use App\Http\Middleware\CheckLoginMiddleware;
+use App\Http\Middleware\CheckSuperAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', action: [WellcomeController::class, 'welcome'])->name('welcome');
@@ -17,13 +19,22 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login', [LoginController::class, 'processLogin'])->name('process_login');
-Route::group([
-], function () {
-                   Route::resource('student', StudentContrller::class)->except(['show']);
+Route::group(['middleware' => CheckLoginMiddleware::class,], function () {
+                   Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+                   Route::resource('student', StudentContrller::class)->except([
+                                      'show',
+                                      'destroy'
+                   ]);
                    Route::get('/student/api', [StudentContrller::class, 'api'])->name('student.api');
-                   // Route::get('/test' , function(){
-                   //     return view('layout.master');
-                   // });
                    Route::get('/courses/api', [CourseController::class, 'api'])->name('courses.api');
-                   Route::resource('courses', CourseController::class)->except(['show']);
+                   Route::resource('courses', CourseController::class)->except([
+                                      'show',
+                                      'destroy'
+                   ]);
+                   Route::group([
+                                      'middleware' => CheckSuperAdminMiddleware::class,
+                   ], function () {
+                                      Route::delete('courses/{course}', [CourseController::class, 'destroy'])->name('courses.destroy');
+                                      Route::delete('student/{course}', [StudentContrller::class, 'destroy'])->name('student.destroy');
+                   });
 });
