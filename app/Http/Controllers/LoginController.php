@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash;
 use Throwable;
 
 class LoginController extends Controller
@@ -20,6 +21,7 @@ class LoginController extends Controller
                  ->where('email', $request->email)
                  ->where('password', $request->password)
                  ->firstOrFail();
+               
                 session()->put('id', $user->id);
                 session()->put('name', $user->name);
                 session()->put('avatar', $user->avatar);
@@ -37,5 +39,20 @@ class LoginController extends Controller
         session()->forget('avatar');
         session()->forget('level');
         return redirect()->route('login');
+    }
+    public function register()
+    {
+        return view('auth.register');
+    }
+    public function processRegister(Request $request)
+
+    {
+       Users::query()
+       ->create([
+           'name' => $request->name,
+           'email' => $request->email,
+           'password' => Hash::make($request->password),
+           'level' => 0,
+       ]);
     }
 }

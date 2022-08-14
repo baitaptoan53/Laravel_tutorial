@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login', [LoginController::class, 'processLogin'])->name('process_login');
+Route::get('register', [LoginController::class, 'register'])->name('register');
+Route::post('register', [LoginController::class, 'processRegister'])->name('process_register');
 Route::group(['middleware' => CheckLoginMiddleware::class,], function () {
                    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
                    Route::resource('student', StudentContrller::class)->except([
@@ -38,3 +40,4 @@ Route::group(['middleware' => CheckLoginMiddleware::class,], function () {
                                       Route::delete('student/{course}', [StudentContrller::class, 'destroy'])->name('student.destroy');
                    });
 });
+ 
